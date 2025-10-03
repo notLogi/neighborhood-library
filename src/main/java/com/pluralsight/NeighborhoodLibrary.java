@@ -88,12 +88,13 @@ public class NeighborhoodLibrary {
     public static void checkOutBook(Scanner scanner){
         System.out.println("What is your name?");
         String name = scanner.nextLine();
-        System.out.println("What book do you want to check out?(Enter \"0\" if you want to go back.");
+        System.out.println("What book do you want to check out?(Enter \"X\" if you want to go back.");
         String title = scanner.nextLine();
-        if(title.equalsIgnoreCase("0")) return;
+        if(title.equalsIgnoreCase("X")) return;
         for(int i = 0; i < bookCount; i++){
             if(books[i].getTitle().equalsIgnoreCase(title)){
                 books[i].checkOut(name);
+                System.out.println("you checked out: " + books[i].getTitle());
             }
         }
     }
@@ -105,6 +106,7 @@ public class NeighborhoodLibrary {
         for (int i = 0; i < bookCount; i++) {
             if (books[i].getId() == bookId) {
                 books[i].checkIn();
+                System.out.println("Thank you for returning : " + books[i].getTitle());
                 return;
             }
         }
