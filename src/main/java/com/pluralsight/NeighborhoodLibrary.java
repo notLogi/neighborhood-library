@@ -37,7 +37,7 @@ public class NeighborhoodLibrary {
                 case 3:
                     System.out.println("Goodbye");
                     isFinished = true;
-                    return;
+                    break;
                 default:
                     System.out.println("Invalid input");
                     break;
