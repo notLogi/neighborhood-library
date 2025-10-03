@@ -70,19 +70,7 @@ public class NeighborhoodLibrary {
             System.out.println("All books are available");
             return;
         }
-            System.out.println("Do you want to check in a book?\nC - to check in a book\nX - to go back to the home screen");
-            String prompt = scanner.nextLine();
-            switch(prompt.toUpperCase()){
-                case "C":
-                    checkInBook(scanner);
-                    break;
-                case "X":
-                    System.out.println("Going back to home screen");
-                    return;
-                default:
-                    System.out.println("Invalid input");
-                    break;
-        }
+        returnBook(scanner);
     }
 
     public static void checkOutBook(Scanner scanner){
@@ -100,16 +88,34 @@ public class NeighborhoodLibrary {
     }
 
     public static void checkInBook(Scanner scanner){
+        System.out.println("What is your name:");
+        String name = scanner.nextLine();
         System.out.println("Enter ID of the book: ");
         int bookId = scanner.nextInt();
         scanner.nextLine();
         for (int i = 0; i < bookCount; i++) {
-            if (books[i].getId() == bookId) {
+            if (books[i].getId() == bookId && books[i].getCheckedOutTo().equalsIgnoreCase(name)) {
                 books[i].checkIn();
                 System.out.println("Thank you for returning : " + books[i].getTitle());
                 return;
             }
         }
-        System.out.println("Book doesn't exist");
+        System.out.println("Book doesn't exist or you didn't check out this book.");
+    }
+
+    public static void returnBook(Scanner scanner){
+        System.out.println("Do you want to check in a book?\nC - to check in a book\nX - to go back to the home screen");
+        String prompt = scanner.nextLine();
+        switch(prompt.toUpperCase()){
+            case "C":
+                checkInBook(scanner);
+                break;
+            case "X":
+                System.out.println("Going back to home screen");
+                return;
+            default:
+                System.out.println("Invalid input");
+                break;
+        }
     }
 }
