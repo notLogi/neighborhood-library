@@ -17,6 +17,8 @@ public class NeighborhoodLibrary {
         Scanner myScanner = new Scanner(System.in);
 
         menuList(myScanner);
+
+        myScanner.close();
     }
 
     public static void menuList(Scanner scanner){
