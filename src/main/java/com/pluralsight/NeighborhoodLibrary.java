@@ -83,10 +83,16 @@ public class NeighborhoodLibrary {
         if(title.equalsIgnoreCase("X")) return;
         for(int i = 0; i < bookCount; i++){
             if(books[i].getTitle().equalsIgnoreCase(title)){
+                if(books[i].isItCheckedOut()){
+                    System.out.println("Sorry, that book is already checked out.");
+                    return;
+                }
                 books[i].checkOut(name);
                 System.out.println("you checked out: " + books[i].getTitle());
+                return;
             }
         }
+        System.out.println("Book not found");
     }
 
     public static void checkInBook(Scanner scanner){
